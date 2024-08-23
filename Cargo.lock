@@ -6590,6 +6590,8 @@ dependencies = [
  "parity-scale-codec",
  "polkadot-sdk",
  "scale-info",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
