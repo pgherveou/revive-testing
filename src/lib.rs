@@ -1,3 +1,28 @@
+//! Experimental test runner for testing [pallet-revive](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive) contracts.
+//! The crate exposes a single function [`run_tests`] that takes a [`Specs`] that defines in a declarative way:
+//! - The Genesis configuration
+//! - A list of [`SpecsAction`] that will be executed in order.
+//!
+//! ## Example
+//! ```rust
+//! #[test]
+//! fn instantiate_works() {
+//!    use SpecsAction::*;
+//!    run_test(Specs {
+//!    balances: vec![(ALICE, 1_000_000_000)],
+//!    actions: vec![Instantiate {
+//!        origin: ALICE,
+//!        value: 1_000,
+//!        gas_limit: Some(GAS_LIMIT),
+//!        storage_deposit_limit: Some(DEPOSIT_LIMIT),
+//!        code: Code::Bytes(include_bytes!("../fixtures/dummy.polkavm").to_vec()),
+//!        data: vec![],
+//!        salt: vec![],
+//!    }],
+//!   })
+//! }
+//! ```
+
 use polkadot_sdk::*;
 use polkadot_sdk::{
     pallet_revive::{CollectEvents, ContractExecResult, ContractInstantiateResult, DebugInfo},
@@ -227,6 +252,7 @@ impl Specs {
 }
 
 /// Run a contract test
+/// The test takes a [`Specs`] and executes the actions in order
 pub fn run_test(specs: Specs) {
     ExtBuilder::default()
         .balance_genesis_config(specs.balances.clone())

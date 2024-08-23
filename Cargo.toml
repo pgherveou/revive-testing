@@ -3,7 +3,7 @@ name = "revive-testing"
 version = "0.1.0"
 license = "MIT OR Apache-2.0"
 edition = "2021"
-description = "Test utilities for running RISCV contracts"
+description = "Test runner for pallet_revive RISCV contracts"
 
 [dependencies]
 codec = { version = "3.6.12", default-features = false, package = "parity-scale-codec" }
