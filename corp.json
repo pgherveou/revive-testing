@@ -1,0 +1,6 @@
+{
+  "name": "Reproducing Invalid Transaction",
+  "paths": [
+    "../resolc-compiler-tests/fixtures/solidity/simple"
+  ]
+}

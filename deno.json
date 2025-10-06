@@ -1,0 +1,25 @@
+{
+  "name": "@testing/run-cases",
+  "version": "0.1.0",
+  "exports": "./run_cases.ts",
+  "tasks": {
+    "run": "deno run --allow-read --allow-run --allow-env run_cases.ts"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["deno.window"]
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 120,
+    "indentWidth": 2,
+    "semiColons": true,
+    "singleQuote": false,
+    "proseWrap": "preserve"
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
+  }
+}

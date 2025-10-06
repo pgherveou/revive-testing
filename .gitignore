@@ -1,0 +1,6 @@
+workdir/
+out/
+*.log
+.env
+cache
+workdir
