@@ -9,7 +9,7 @@ POLKADOT_SDK_PATH="$HOME/polkadot-sdk"
 SUBSTRATE_NODE_PATH="$POLKADOT_SDK_PATH/target/release/substrate-node"
 REVIVE_DEV_NODE_PATH="$POLKADOT_SDK_PATH/target/release/revive-dev-node"
 ETH_RPC_PATH="$POLKADOT_SDK_PATH/target/release/eth-rpc"
-
+RETESTER="$HOME/github/revive-differential-tests/target/release/retester"
 cat >corp.json <<'EOF'
 {
   "name": "Reproducing Invalid Transaction",
@@ -21,9 +21,8 @@ EOF
 
 mkdir workdir
 echo "Compiling the retester binary"
-cargo build --release --manifest-path "../revive-differential-tests/Cargo.toml" >/dev/null 2>&1
 echo '🔮 Starting The DT Framework, this may take a while 🔮'
-RUST_LOG=info ../revive-differential-tests/target/release/retester \
+RUST_LOG=info $RETESTER \
 	test \
 	--platform revive-dev-node-revm-solc \
 	--corpus ./corp.json \
